@@ -1,8 +1,6 @@
-mod game;
-
 //using statements
 use eframe::{Error, egui};
-use crate::game::Game;
+use RockPaperScissors_Rust::Game;
 
 fn main() -> Result<(), Error> {
     //give an app instance
