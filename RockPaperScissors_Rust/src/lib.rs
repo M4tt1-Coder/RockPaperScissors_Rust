@@ -1,8 +1,9 @@
 pub mod game_renderer;
+pub mod checker;
 
-use eframe::{egui::{TopBottomPanel, CentralPanel}, App};
+use eframe::{egui::{TopBottomPanel, CentralPanel, Label}, App};
 
-use game_renderer::{render_header_content, render_mode_selection};
+use game_renderer::{render_header_content, render_mode_selection, user_vs_user, user_vs_computer};
 
 
 ///To represent the single playing choice
@@ -10,6 +11,8 @@ use game_renderer::{render_header_content, render_mode_selection};
 /// Paper -> 1
 /// Scissors -> 2
 
+
+#[derive(PartialEq, Debug)]
 pub enum Choice {
     Rock,
     Paper,
@@ -38,6 +41,7 @@ pub struct Game{
     pub winner: Winner,// competitor 1 = 0 AND competitor 2 = 1 AND draw = 3
     pub player_1_choice: Choice,
     pub player_2_choice: Choice,
+    pub choices_made: bool,
     pub finished: bool,
     pub playing_mode: PlayingMode
 }
@@ -49,6 +53,7 @@ impl Game{
             winner: Winner::Default,
             player_1_choice: Choice::Default,
             player_2_choice: Choice::Default,
+            choices_made: false,
             finished: false,
             playing_mode: PlayingMode::NotSet,
         }
@@ -74,6 +79,22 @@ impl App for Game{
             CentralPanel::default().show(ctx, |ui| {
                 render_mode_selection(ui, self, frame);
             });
+        
+        //render page for user vs user mode
+        }else if self.playing_mode == PlayingMode::UserVsUser && !self.choices_made{
+            CentralPanel::default().show(ctx, |ui|{
+                user_vs_user(ui, self, frame); 
+            });
+
+        //render page for user vs computer mode
+        }else if self.playing_mode == PlayingMode::UserVsComputer && !self.choices_made{
+            CentralPanel::default().show(ctx, |ui|{
+                user_vs_computer(ui, self, frame);                
+            });
+
+        //show the result of the current game    
+        }else if self.choices_made{
+
         }
         
     }
