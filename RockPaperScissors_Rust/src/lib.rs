@@ -3,9 +3,9 @@ pub mod checker;
 
 use eframe::{egui::{TopBottomPanel, CentralPanel, Label}, App};
 
-use game_renderer::{render_header_content, render_mode_selection, user_vs_user, user_vs_computer};
+use game_renderer::{render_header_content, render_mode_selection, user_vs_user, user_vs_computer, render_result};
 
-
+use checker::who_is_the_winner;
 ///To represent the single playing choice
 /// Rock -> 0
 /// Paper -> 1
@@ -94,7 +94,12 @@ impl App for Game{
 
         //show the result of the current game    
         }else if self.choices_made{
+            //declare how is the winner
+            who_is_the_winner(self);
 
+            CentralPanel::default().show(ctx, |ui|{
+                render_result(ui, self, frame);
+            });
         }
         
     }

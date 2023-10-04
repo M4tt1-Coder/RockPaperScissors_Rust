@@ -112,6 +112,7 @@ pub fn user_vs_user(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
     }
 }
 
+//case [USER] vs [COMPUTER]
 pub fn user_vs_computer(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
     frame.set_window_size(vec2(285., 160.));
 
@@ -162,4 +163,26 @@ pub fn user_vs_computer(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
     if game.player_1_choice != Choice::Default && game.player_2_choice != Choice::Default{
         game.choices_made = true;
     }
+}
+
+//result screen for all cases
+pub fn render_result(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
+    frame.set_window_size(vec2(285., 200.));
+    
+    //show a message with who won the game
+    ui.horizontal(|ui|{
+        if game.winner == Winner::Draw{
+            ui.add(Label::new("The game ends in a draw!"));
+        }else if game.winner == Winner::Player1{
+            ui.add(Label::new("Player 1 wins!"));        
+        }else if game.winner == Winner::Player2{
+            ui.add(Label::new("Player 2 wins!"));
+        }
+    });
+    ui.add_space(30.);
+
+    //just show the choices of every again 
+    ui.horizontal(|ui|{
+
+    });
 }
