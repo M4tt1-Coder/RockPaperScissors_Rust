@@ -1,7 +1,8 @@
 pub mod game_renderer;
 pub mod checker;
+pub mod pictures;
 
-use eframe::{egui::{TopBottomPanel, CentralPanel, Label}, App};
+use eframe::{egui::{TopBottomPanel, CentralPanel}, App};
 
 use game_renderer::{render_header_content, render_mode_selection, user_vs_user, user_vs_computer, render_result};
 

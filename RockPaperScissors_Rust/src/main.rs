@@ -19,5 +19,9 @@ fn main() -> Result<(), Error> {
     //run the game
     eframe::run_native(app_name,
         options,
-        Box::new(|_cc| Box::new(game)))
+        Box::new(|cc| {
+            egui_extras::install_image_loaders(&cc.egui_ctx);
+            Box::new(game)
+        })
+        )
 }

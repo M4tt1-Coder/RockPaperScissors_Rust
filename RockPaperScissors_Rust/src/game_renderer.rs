@@ -1,5 +1,6 @@
-use eframe::{egui::{Context, Ui, Label, Spinner, Button, vec2, Align2}, epaint::Color32, Frame};
+use eframe::{egui::{Ui, Label, Spinner, Button, vec2, Image},egui, epaint::Color32, Frame};
 use rand::Rng;
+
 
 use crate::{Game, Winner, PlayingMode, Choice};
 
@@ -165,9 +166,12 @@ pub fn user_vs_computer(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
     }
 }
 
+//TODO - add some pictures to the result screen
+//-> https://github.com/emilk/egui/blob/c69fe941afdea5ef6f3f84ed063554500b6262e8/eframe/examples/image.rs
+
 //result screen for all cases
 pub fn render_result(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
-    frame.set_window_size(vec2(285., 200.));
+    frame.set_window_size(vec2(500., 200.));
     
     //show a message with who won the game
     ui.horizontal(|ui|{
@@ -182,7 +186,37 @@ pub fn render_result(ui: &mut Ui, game: &mut Game, frame: &mut Frame){
     ui.add_space(30.);
 
     //just show the choices of every again 
-    ui.horizontal(|ui|{
+    show_player_choices(&game.player_1_choice, &game.player_2_choice, ui);
+}
 
+//_________________
+//HELPER functions
+
+//render the players choice to the result screen
+fn show_player_choices(user_one_choice: &Choice, user_two_choice: &Choice, ui: &mut Ui){
+    ui.horizontal(|ui|{
+        //render user 1 choice
+        if user_one_choice == &Choice::Rock {
+            ui.add(Image::new(egui::include_image!("../pictures/rock.jpg")));
+            ui.add_sized((50.,50.), Label::new("Rock"));
+        }else if user_one_choice == &Choice::Paper {
+            ui.add_sized((50.,50.), Label::new("Paper"));
+        }else if user_one_choice == &Choice::Scissors{
+            ui.add_sized((50.,50.), Label::new("Scissors"));
+        }
+        ui.add_space(20.);
+
+        //[vs] text
+        ui.add(Label::new("VS"));
+
+        //render user 2 choice
+        if user_two_choice == &Choice::Rock {
+            ui.add_sized((50.,50.), Label::new("Rock"));
+        }else if user_two_choice == &Choice::Paper {
+            ui.add_sized((50.,50.), Label::new("Paper"));
+        }else if user_two_choice == &Choice::Scissors{
+            ui.add_sized((50.,50.), Label::new("Scissors"));
+        }
     });
 }
+
