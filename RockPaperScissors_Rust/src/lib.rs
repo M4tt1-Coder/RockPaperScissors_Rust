@@ -4,7 +4,7 @@ pub mod pictures;
 
 use eframe::{egui::{TopBottomPanel, CentralPanel}, App};
 
-use game_renderer::{render_header_content, render_mode_selection, user_vs_user, user_vs_computer, render_result};
+use game_renderer::{render_header_content, render_mode_selection, user_vs_user, user_vs_computer, render_result, display_new_game_popup};
 
 use checker::who_is_the_winner;
 ///To represent the single playing choice
@@ -100,6 +100,13 @@ impl App for Game{
 
             CentralPanel::default().show(ctx, |ui|{
                 render_result(ui, self, frame);
+
+                ui.add_space(10.);
+
+                //ask for another game
+                if self.winner != Winner::Default{
+                    display_new_game_popup(ui, frame, self);
+                }
             });
         }
         
@@ -109,3 +116,4 @@ impl App for Game{
         std::time::Duration::from_secs(30)
     }
 }
+

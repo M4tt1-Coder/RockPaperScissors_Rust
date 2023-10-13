@@ -1,16 +1,22 @@
-use eframe::{egui, egui::{Vec2, TextureId}};
+use eframe::{egui, egui::{vec2, Image, Ui,}};
 
-#[derive(Default)]
-pub struct RockPicture{
-    texture: Option<(Vec2, TextureId)>
+pub fn show_rock_picture(ui: &mut Ui){
+    ui.add_sized(
+        vec2(110., 110.),
+        Image::new(egui::include_image!("../pictures/rock.jpg")).rounding(10.)
+    );
 }
 
-impl RockPicture {
-    fn load(&mut self){
-        //
-        let image_data = include_bytes!("./../pictures/rock.jpg");
-        
-    }
-
+pub fn show_paper_picture(ui: &mut Ui){
+    ui.add_sized(
+        vec2(100., 100.),
+        Image::new(egui::include_image!("../pictures/paper.jpg")).rounding(10.)
+    );
 }
 
+pub fn show_scissors_picture(ui: &mut Ui){
+    ui.add_sized(
+        vec2(110., 110.),
+        Image::new(egui::include_image!("../pictures/scissors.jpg")).rounding(10.)
+    );
+}
