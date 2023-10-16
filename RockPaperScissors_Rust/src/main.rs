@@ -1,5 +1,5 @@
 //using statements
-use eframe::{Error, egui};
+use eframe::{egui, Error};
 use RockPaperScissors_Rust::Game;
 
 fn main() -> Result<(), Error> {
@@ -10,18 +10,21 @@ fn main() -> Result<(), Error> {
     let app_name = "Rock Paper Scissors";
 
     //declare the app settings
-    let options = eframe::NativeOptions{
+    let options = eframe::NativeOptions {
         min_window_size: Some(egui::vec2(250., 250.)),
         max_window_size: Some(egui::vec2(400., 400.)),
         ..eframe::NativeOptions::default()
     };
 
     //run the game
-    eframe::run_native(app_name,
+    eframe::run_native(
+        app_name,
         options,
         Box::new(|cc| {
             egui_extras::install_image_loaders(&cc.egui_ctx);
             Box::new(game)
-        })
-        )
+        }),
+    )
 }
+
+//TODO - add more styling layouts 
