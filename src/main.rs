@@ -28,3 +28,5 @@ fn main() -> Result<(), Error> {
 }
 
 //TODO - add more styling layouts 
+//TODO - write readme file
+//TODO - think of workflow on github

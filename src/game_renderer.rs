@@ -50,7 +50,10 @@ pub fn render_mode_selection(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
     ui.horizontal(|ui| {
         //one button for user VS user - mode
         if ui
-            .add_sized((50., 50.), Button::new("User VS User"))
+            .add_sized(
+                (50., 50.),
+                Button::new(RichText::new("User VS User").color(Color32::WHITE)),
+            )
             .clicked()
         {
             game.playing_mode = PlayingMode::UserVsUser;
@@ -58,12 +61,18 @@ pub fn render_mode_selection(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
         ui.add_space(10.);
 
         //between a "OR" label
-        ui.add_sized((40., 40.), Label::new("OR"));
+        ui.add_sized(
+            (40., 40.),
+            Label::new(RichText::new("OR").color(Color32::WHITE)),
+        );
         ui.add_space(10.);
 
         //one buttom for user VS computer - mode
         if ui
-            .add_sized((50., 50.), Button::new("User VS Computer"))
+            .add_sized(
+                (50., 50.),
+                Button::new(RichText::new("User VS Computer").color(Color32::WHITE)),
+            )
             .clicked()
         {
             game.playing_mode = PlayingMode::UserVsComputer;
@@ -80,9 +89,9 @@ pub fn user_vs_user(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
     //label for the asking of the user's input
     ui.horizontal(|ui| {
         if game.player_1_choice == Choice::Default {
-            ui.add(Label::new("Make a choice player one ... "));
+            ui.label(RichText::new("Make a choice player one ... ").color(Color32::WHITE));
         } else if game.player_2_choice == Choice::Default {
-            ui.add(Label::new("Make a choice player two ... "));
+            ui.label(RichText::new("Make a choice player two ... ").color(Color32::WHITE));
         }
     });
     ui.add_space(30.);
@@ -90,7 +99,13 @@ pub fn user_vs_user(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
     //three buttons with rock or paper or scissors
     ui.horizontal(|ui| {
         //rock button
-        if ui.add_sized((60., 60.), Button::new("Rock")).clicked() {
+        if ui
+            .add_sized(
+                (60., 60.),
+                Button::new(RichText::new("Rock").color(Color32::WHITE)),
+            )
+            .clicked()
+        {
             if game.player_1_choice == Choice::Default {
                 game.player_1_choice = Choice::Rock;
             } else if game.player_2_choice == Choice::Default {
@@ -99,7 +114,13 @@ pub fn user_vs_user(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
         }
 
         //paper button
-        if ui.add_sized((60., 60.), Button::new("Paper")).clicked() {
+        if ui
+            .add_sized(
+                (60., 60.),
+                Button::new(RichText::new("Paper").color(Color32::WHITE)),
+            )
+            .clicked()
+        {
             if game.player_1_choice == Choice::Default {
                 game.player_1_choice = Choice::Paper;
             } else if game.player_2_choice == Choice::Default {
@@ -108,7 +129,13 @@ pub fn user_vs_user(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
         }
 
         //scissors button
-        if ui.add_sized((60., 60.), Button::new("Scissors")).clicked() {
+        if ui
+            .add_sized(
+                (60., 60.),
+                Button::new(RichText::new("Scissors").color(Color32::WHITE)),
+            )
+            .clicked()
+        {
             if game.player_1_choice == Choice::Default {
                 game.player_1_choice = Choice::Scissors;
             } else if game.player_2_choice == Choice::Default {
@@ -130,7 +157,7 @@ pub fn user_vs_computer(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
     //label for the asking of the user's input
     ui.horizontal(|ui| {
         if game.player_1_choice == Choice::Default {
-            ui.add(Label::new("Make a choice player ... "));
+            ui.label(RichText::new("Make a choice player ... ").color(Color32::LIGHT_RED));
         }
     });
     ui.add_space(30.);
@@ -138,21 +165,39 @@ pub fn user_vs_computer(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
     //three buttons with rock or paper or scissors
     ui.horizontal(|ui| {
         //rock button
-        if ui.add_sized((60., 60.), Button::new("Rock")).clicked() {
+        if ui
+            .add_sized(
+                (60., 60.),
+                Button::new(RichText::new("Rock").color(Color32::LIGHT_GRAY)),
+            )
+            .clicked()
+        {
             if game.player_1_choice == Choice::Default {
                 game.player_1_choice = Choice::Rock;
             }
         }
 
         //paper button
-        if ui.add_sized((60., 60.), Button::new("Paper")).clicked() {
+        if ui
+            .add_sized(
+                (60., 60.),
+                Button::new(RichText::new("Paper").color(Color32::WHITE)),
+            )
+            .clicked()
+        {
             if game.player_1_choice == Choice::Default {
                 game.player_1_choice = Choice::Paper;
             }
         }
 
         //scissors button
-        if ui.add_sized((60., 60.), Button::new("Scissors")).clicked() {
+        if ui
+            .add_sized(
+                (60., 60.),
+                Button::new(RichText::new("Scissors").color(Color32::WHITE)),
+            )
+            .clicked()
+        {
             if game.player_1_choice == Choice::Default {
                 game.player_1_choice = Choice::Scissors;
             }
@@ -189,11 +234,11 @@ pub fn render_result(ui: &mut Ui, game: &mut Game, frame: &mut Frame) {
             Layout::centered_and_justified(Direction::RightToLeft),
             |ui| {
                 if game.winner == Winner::Draw {
-                    ui.add(Label::new("The game ends in a draw!"));
+                    ui.label(RichText::new("The game ends in a draw!").color(Color32::WHITE));
                 } else if game.winner == Winner::Player1 {
-                    ui.add(Label::new("Player 1 wins!"));
+                    ui.label(RichText::new("Player 1 wins!").color(Color32::WHITE));
                 } else if game.winner == Winner::Player2 {
-                    ui.add(Label::new("Player 2 wins!"));
+                    ui.label(RichText::new("Player 2 wins!").color(Color32::WHITE));
                 }
             },
         );
@@ -210,7 +255,10 @@ pub fn display_new_game_popup(ui: &mut Ui, frame: &mut Frame, game: &mut Game) {
 
     //prepare variables for showing popup
     //button instance
-    let trigger_button = ui.add_sized((70., 40.), Button::new("Play Again"));
+    let trigger_button = ui.add_sized(
+        (70., 40.),
+        Button::new(RichText::new("Play Again!").color(Color32::WHITE)),
+    );
     //create id for popup
     let popup_id = ui.make_persistent_id("again_popup");
     //check if button was clicked
@@ -285,7 +333,7 @@ fn show_player_choices(user_one_choice: &Choice, user_two_choice: &Choice, ui: &
         ui.add_space(10.);
 
         //[vs] text
-        ui.add(Label::new("VS"));
+        ui.label(RichText::new("VS").color(Color32::YELLOW));
         ui.add_space(10.);
 
         //render user 2 choice
