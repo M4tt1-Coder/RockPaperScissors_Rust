@@ -255,45 +255,65 @@ pub fn display_new_game_popup(ui: &mut Ui, frame: &mut Frame, game: &mut Game) {
 
     //prepare variables for showing popup
     //button instance
-    let trigger_button = ui.add_sized(
-        (70., 40.),
-        Button::new(RichText::new("Play Again!").color(Color32::WHITE)),
-    );
-    //create id for popup
-    let popup_id = ui.make_persistent_id("again_popup");
-    //check if button was clicked
-    if trigger_button.clicked() {
-        ui.memory_mut(|mem| mem.toggle_popup(popup_id));
-    }
+    ui.horizontal(|ui| {
+        ui.with_layout(
+            Layout::centered_and_justified(Direction::RightToLeft),
+            |ui| {
+                let trigger_button = ui.add_sized(
+                    (70., 40.),
+                    Button::new(RichText::new("Play Again!").color(Color32::WHITE)),
+                );
 
-    //set which cover mode the popup should have
-    let above = AboveOrBelow::Above;
+                //create id for popup
+                let popup_id = ui.make_persistent_id("again_popup");
+                //check if button was clicked
+                if trigger_button.clicked() {
+                    ui.memory_mut(|mem| mem.toggle_popup(popup_id));
+                }
 
-    //the popup to show
-    popup::popup_above_or_below_widget(ui, popup_id, &trigger_button, above, |ui| {
-        //normal question header
-        ui.horizontal(|ui| {
-            //ui.add(Label::new("Do you want to play again?"));
-            ui.label(
-                RichText::new("Do you want to play again?")
-                    .size(15.)
-                    .color(Color32::WHITE),
-            )
-        });
+                //set which cover mode the popup should have
+                let above = AboveOrBelow::Above;
 
-        //two buttons to answer the question
-        ui.horizontal(|ui| {
-            //button for answer yes
-            if ui.add_sized((40., 30.), Button::new("Yes")).clicked() {
-                reset_game(game);
-            }
-            ui.add_space(50.);
+                //the popup to show
+                popup::popup_above_or_below_widget(ui, popup_id, &trigger_button, above, |ui| {
+                    //normal question header
+                    ui.horizontal(|ui| {
+                        //ui.add(Label::new("Do you want to play again?"));
+                        ui.label(
+                            RichText::new("Do you want to play again?")
+                                .size(15.)
+                                .color(Color32::WHITE),
+                        )
+                    });
 
-            //button for answer no
-            if ui.add_sized((40., 30.), Button::new("No")).clicked() {
-                return;
-            }
-        });
+                    //two buttons to answer the question
+                    ui.horizontal(|ui| {
+                        //button for answer yes
+                        if ui
+                            .add_sized(
+                                (40., 30.),
+                                Button::new(RichText::new("Yes").color(Color32::WHITE)),
+                            )
+                            .clicked()
+                        {
+                            reset_game(game);
+                        }
+                        ui.add_space(50.);
+
+                        //button for answer no
+                        if ui
+                            .add_sized(
+                                (40., 30.),
+                                Button::new(RichText::new("No").color(Color32::WHITE)),
+                            )
+                            .clicked()
+                        {
+                            return;
+                        }
+                    });
+                });
+            },
+        );
     });
 }
 
