@@ -2,6 +2,12 @@
 use eframe::{egui, Error};
 use RockPaperScissors_Rust::Game;
 
+///Set the default game window settings
+/// 
+/// App name = "RockPaperScissors"
+/// 
+/// Uses egui, a GUI for RUST: https://docs.rs/egui/latest/egui/
+
 fn main() -> Result<(), Error> {
     //give an app instance
     let game = Game::new();

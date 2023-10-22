@@ -7,17 +7,24 @@ use eframe::{
     App,
 };
 
+///Using statement and entry point for UI elements
 use game_renderer::{
     display_new_game_popup, render_header_content, render_mode_selection, render_result,
     user_vs_computer, user_vs_user,
 };
 
+///Determines who is currently the game winner
 use checker::who_is_the_winner;
 ///To represent the single playing choice
 /// Rock -> 0
 /// Paper -> 1
 /// Scissors -> 2
 
+///Enum for the made choices of the player
+/// 
+///you can assign it like this
+/// 
+/// let choice = Choice::Default;
 #[derive(PartialEq, Debug)]
 pub enum Choice {
     Rock,
@@ -26,6 +33,11 @@ pub enum Choice {
     Default,
 }
 
+///Enum to set the game mode
+/// 
+/// Declaration: 
+/// 
+/// let game_mode = PlayingMode::UserVsComputer;
 #[derive(PartialEq, Debug)]
 pub enum PlayingMode {
     UserVsUser,
@@ -33,6 +45,11 @@ pub enum PlayingMode {
     NotSet,
 }
 
+///Enum represents winner which was set in the checker
+/// 
+/// Declaration: 
+/// 
+/// let winner = Winner::Player1;
 #[derive(PartialEq, Debug)]
 pub enum Winner {
     Player1,
@@ -41,16 +58,22 @@ pub enum Winner {
     Default,
 }
 
+///The game struct ...
+/// 
+/// ...includes all necessary information as properties to create the workflow of the game.
 pub struct Game {
-    pub round: i8,
+    pub round: i8,//counts the round which the player played
     pub winner: Winner, // competitor 1 = 0 AND competitor 2 = 1 AND draw = 3
-    pub player_1_choice: Choice,
-    pub player_2_choice: Choice,
-    pub choices_made: bool,
-    pub finished: bool,
-    pub playing_mode: PlayingMode,
+    pub player_1_choice: Choice,//choice from the first user !always a human!
+    pub player_2_choice: Choice,//decision from player 2 !can be the computer -> depends on the gamemode!
+    pub choices_made: bool,//boolean to control the program's logic
+    pub finished: bool,//stops the game spinner on the top right corner; prevents further processing in choice making if all choices were made
+    pub playing_mode: PlayingMode,//represents the current mode of the game
 }
 
+///Implementations for the game
+/// 
+/// "new" => for the creating of a new game
 impl Game {
     pub fn new() -> Game {
         Game {
@@ -65,6 +88,10 @@ impl Game {
     }
 }
 
+///Apply the App trait from eframe to the game struct to use it for the framework
+/// App trait: https://docs.rs/eframe/latest/eframe/
+/// 
+/// Does all the important things to manipulate the rendering UI
 impl App for Game {
     fn save(&mut self, _storage: &mut dyn eframe::Storage) {}
 
@@ -72,6 +99,7 @@ impl App for Game {
         true
     }
 
+    ///Endpoint where all components are rendered
     fn update(&mut self, ctx: &eframe::egui::Context, frame: &mut eframe::Frame) {
         //render header on every page
         TopBottomPanel::top("game_information").show(ctx, |ui| {
