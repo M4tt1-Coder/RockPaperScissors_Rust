@@ -1,5 +1,10 @@
 //using statements
 use crate::{Game, Choice, Winner};
+
+/// A function that checks all winning cases for both players and sets game to finished and winner instance.
+/// 
+/// Takes in:
+/// - game = game instance
 pub fn who_is_the_winner(game: &mut Game){
     //check out of player one's sight
     
