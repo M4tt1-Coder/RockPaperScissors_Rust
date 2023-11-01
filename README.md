@@ -18,7 +18,7 @@ The *first* step ever when you want with a repository from GitHub, you clone it!
         git clone https://github.com/M4tt1-Coder/RockPaperScissors_Rust.git
     ```
 
-    - There some other options to clone it. For that please check it on GitHub in my repository!
+- There some other options to clone it. For that please check it on GitHub in my repository!
 
 Now if you have Rust already installed you start immediately, if not than go [here](https://www.rust-lang.org/tools/install),  install it and come 
 back afterwards.
