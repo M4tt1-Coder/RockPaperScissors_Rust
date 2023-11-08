@@ -33,6 +33,5 @@ fn main() -> Result<(), Error> {
     )
 }
 
-//TODO - make background of symbol pictures transparent
 //TODO - write readme file
 //TODO - think of workflow on github

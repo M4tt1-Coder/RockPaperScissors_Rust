@@ -47,9 +47,11 @@ Now after you ran ... :
     cargo run
 ```
 ... you should see something like this: 
+
 ![show the start screen for the game](pictures/start-page.png)
 
 Another page looks like this:
+
 ![give an example of the game](pictures/result-screen.png)
 
 ### First own custumization
@@ -92,3 +94,44 @@ Then take this few hints:
         //...
     }
 ```
+So now that you know some little starts to build yourself the app you want based on the repository!
+
+## Credits
+
+First I have to say I build that simple game alone as a side project so it's free for every via license!
+An idea for this project came from @hoss-green, thanks for the support my man!
+
+The best help was the documentation of egui and eframe on github and the rust website for public crates.
+
+- Click [here](https://docs.rs/egui/latest/egui/) to go to the egui-documentation.
+- Checkout [this](https://github.com/emilk/egui/blob/c69fe941afdea5ef6f3f84ed063554500b6262e8/eframe/examples/image.rs) link to come to a example repository for the image usage with egui.
+- You find eframe under [that](https://docs.rs/eframe/latest/eframe/) url.
+
+My personal socials:
+- [LinkedIn](https://www.linkedin.com/in/matthis-gei%C3%9Fler-4198b9258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- [Fiverr](https://www.fiverr.com/matthisgeissler)
+- [Instagram](https://instagram.com/_m4tt1.g31ssler_?igshid=ZTE5YWJnN29mMnA0)
+
+## License
+
+MIT License
+
+Copyright (c) 2023 Matti
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
