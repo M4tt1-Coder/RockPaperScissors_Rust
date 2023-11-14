@@ -19,3 +19,21 @@ jobs:
         run: cargo build --verbose
       - name: Run unit tests
         run: cargo test --verbose
+
+  cache:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: cache the binaries
+        id: cache-rust
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-rust-bin
+        with:
+          key: ${{runner.os}}-build-${{env.cache-name}}-${{hashFiles('**/Cargo.toml')}}
+          restore-keys: | 
+            ${{runner.os}}-build-${{env.cache-name}}-
+            ${{runner.os}}-build-
+            ${{runner.os}}-

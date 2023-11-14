@@ -33,5 +33,5 @@ fn main() -> Result<(), Error> {
     )
 }
 
-//TODO - write readme file
-//TODO - think of workflow on github
+//TODO - add cache for the dependency crates
+//TODO - write unit tests for essential features
