@@ -1,6 +1,7 @@
 pub mod checker;
 pub mod game_renderer;
 pub mod pictures;
+pub mod tests;
 
 use eframe::{
     egui::{CentralPanel, TopBottomPanel},
@@ -61,6 +62,7 @@ pub enum Winner {
 ///The game struct ...
 /// 
 /// ...includes all necessary information as properties to create the workflow of the game.
+#[derive(PartialEq, Debug)]
 pub struct Game {
     pub round: i8,//counts the round which the player played
     pub winner: Winner, // competitor 1 = 0 AND competitor 2 = 1 AND draw = 3

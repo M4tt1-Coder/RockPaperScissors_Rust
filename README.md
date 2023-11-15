@@ -20,7 +20,7 @@ The *first* step ever when you want to start with a repository from GitHub, you 
 
 - There some other options to clone it. For that please check it on GitHub in my repository!
 
-Now if you have Rust already installed you start immediately, if not than go [here](https://www.rust-lang.org/tools/install),  install it and come 
+Now if you have Rust already installed you can start immediately, if not than go [here](https://www.rust-lang.org/tools/install),  install it and come 
 back afterwards.
 
 To check if Rust is already installed enter this command in the command line:
@@ -56,7 +56,7 @@ Another page looks like this:
 
 ### First own custumization
 Now you want to create your own game or app based on the existing repository?
-Then take this few hints:
+Then take this a few hints:
 - Set your applications name:
 ```rust
     let app_name = "Your app name";
@@ -68,8 +68,8 @@ Then take this few hints:
     )
     
 ```
-- When you want to create a component use an own function for it!
-    - ... call it where you set your implementation of the App trait of egui
+- When you want to create a component, use an own function for it!
+    - ... call it where you want to set your implementation of the App trait of egui
     ```rust
         fn display_your_content(ui: &mut Ui, app: &mut App){
             ui.horizontal(|ui| {
@@ -98,7 +98,7 @@ So now that you know some little starts to build yourself the app you want based
 
 ## Credits
 
-First I have to say I build that simple game alone as a side project so it's free for every via license!
+First I have to say, I build that simple game alone as a side project so it's free for everyone via license!
 An idea for this project came from @hoss-green, thanks for the support my man!
 
 The best help was the documentation of egui and eframe on github and the rust website for public crates.
