@@ -12,7 +12,7 @@ As I said earlier, egui is a great framework for UI components and applications 
 
 ## How do I get it?
 
-The *first* step ever when you want with a repository from GitHub, you clone it!
+The *first* step ever when you want to start with a repository from GitHub, you clone it!
     - So head to the folder where you want to have your copied repository situated and then use this command in an opened command in your chosen destination: 
 ```
     git clone https://github.com/M4tt1-Coder/RockPaperScissors_Rust.git
