@@ -19,3 +19,5 @@ jobs:
         run: cargo build --verbose
       - name: Run unit tests
         run: cargo test --verbose
+      - name: cache rust project 
+        uses: Swatinem/rust-cache@v2
