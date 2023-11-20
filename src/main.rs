@@ -32,6 +32,3 @@ fn main() -> Result<(), Error> {
         }),
     )
 }
-
-//TODO - add cache for the dependency crates
-//TODO - write unit tests for essential features
