@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: rustup toolchain install stable -profile minimal
+      - run: rustup toolchain install stable --profile minimal
       - name: cache rust project
         uses: Swatinem/rust-cache@v2
       - name: Build the binaries
